@@ -1,0 +1,23 @@
+{
+  "name": "automating-sprint-report",
+  "version": "1.0.0",
+  "description": "This is started as a project to automate our sprint report at the end of the each sprint which currently we have to fill up in the Google Sheet manually.",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohsinian-reborn/Automating-Sprint-Report.git"
+  },
+  "author": "Tahsin Ahmed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohsinian-reborn/Automating-Sprint-Report/issues"
+  },
+  "homepage": "https://github.com/mohsinian-reborn/Automating-Sprint-Report#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "octokit": "^4.0.2"
+  }
+}
