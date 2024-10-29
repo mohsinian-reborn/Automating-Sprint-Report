@@ -35,6 +35,16 @@ export const getOpen = async (req, res) => {
           q: query
 
         });
+        const openPRCollection = db.collection("openPRs");
+        const insertData = [];
+        for(const item of searchResponse.data.items) {
+            insertData.push({
+                PR_title: item.title,
+                Author: item.user.login,
+                Created_At: item.created_at
+            });
+        }
+        await openPRCollection.insertMany(insertData);
         res.status(200).json(searchResponse.data.items);
     }
     catch (err) {
