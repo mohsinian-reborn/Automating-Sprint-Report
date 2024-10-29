@@ -1,4 +1,5 @@
 import { Octokit} from "octokit";
+import db from "../db/connection.mjs"; 
 import 'dotenv/config';
 const octokit = new Octokit({
     auth: process.env.APP_TOKEN
@@ -26,7 +27,7 @@ export const getOpen = async (req, res) => {
         const owner = 'aht-wtag';
         const repo = 'social-media';
         const username = 'aht-wtag'
-        const query = `repo:${owner}/${repo} author:${username} type:pr is:merged`
+        const query = `repo:${owner}/${repo} author:${username} type:pr state:open`
         const searchResponse = await octokit.request('GET /search/issues', {
           headers: {
             'X-GitHub-Api-Version': '2022-11-28'
@@ -34,7 +35,7 @@ export const getOpen = async (req, res) => {
           q: query
 
         });
-        res.status(200).json(searchResponse);
+        res.status(200).json(searchResponse.data.items);
     }
     catch (err) {
         return res.status(400).json(`Error: ${err}`);
