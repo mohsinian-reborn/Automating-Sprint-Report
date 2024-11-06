@@ -5,7 +5,10 @@
   "description": "This is started as a project to automate our sprint report at the end of the each sprint which currently we have to fill up in the Google Sheet manually.",
   "main": "server.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "nodemon server.mjs",
+    "lint": "eslint .",
+    "lint::": "eslint . --fix"
   },
   "repository": {
     "type": "git",
@@ -21,6 +24,12 @@
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "mongodb": "^6.10.0",
+    "mongoose": "^8.8.0",
     "octokit": "^4.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^9.14.0",
+    "nodemon": "^3.1.7",
+    "prettier": "^3.3.3"
   }
 }
