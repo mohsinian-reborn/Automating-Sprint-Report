@@ -14,7 +14,7 @@ class Mongo {
         `mongodb://${user}:${password}@${url}/${databaseName}?authSource=admin`,
       );
     } catch (err) {
-      throw err;
+      console.error(err);
     }
 
     mongoose.connection.on('connected', () => {
