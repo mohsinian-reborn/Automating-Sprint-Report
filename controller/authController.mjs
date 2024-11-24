@@ -30,7 +30,7 @@ export const getCallBack = async (req, res) => {
           "code": code,
         }),
       });
-      const {access_token} = await response.json();
-      console.log(response);
+      const data = await response.json();
+      console.log(data.access_token);
       res.status(200).send(`authorized!`);
 };
