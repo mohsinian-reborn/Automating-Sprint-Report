@@ -1,11 +1,11 @@
 import { Octokit } from 'octokit';
 import mongo from '../db/connection.mjs';
+import tokenStore from '../tokenStore.mjs';
 import 'dotenv/config';
 
 const db = await mongo.connect();
-
 const octokit = new Octokit({
-  auth: process.env.APP_TOKEN,
+  auth: tokenStore.getToken(),
 });
 
 export const getAll = async (req, res) => {
