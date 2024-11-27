@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import tokenStore from '../tokenStore.mjs';
+import { Octokit } from 'octokit';
 
 const OAuth_CLIENT_ID = process.env.OAuth_Client_ID;
 const OAuth_CLIENT_SECRET = process.env.OAuth_SECRET;
@@ -34,4 +35,17 @@ export const getCallBack = async (req, res) => {
       const data = await response.json();
       tokenStore.setToken(data.access_token)
       res.status(200).send(`authorized!`);
+};
+
+export const findUser = async (req, res) => {
+  const octokit = new Octokit({
+    auth: tokenStore.getToken(),
+  });
+
+  const userDetails = await octokit.request('GET /user', {
+    headers: {
+      'X-GitHub-Api-Version': '2022-11-28'
+    }
+  });
+  res.status(200).send(userDetails.data.login);
 };
